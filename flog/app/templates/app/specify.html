@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'app:index' %}">FLOG IN THE SEA</a>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'app:index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:specify_new' pk=pk%}">Post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:regist' %}">Resist</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:profile' %}">Profile</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+    {% for post in specify %}
+    <a href="{% url 'app:detail' pk=post.pk%}" class="col-3">
+{{ post.author }}
+        <img src="{{ post.image.url }}"  class="img-fluid"/>
+         </a>
+    {% endfor %}
+</div>
+
+{% endblock content %}

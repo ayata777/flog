@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'app:index' %}">Flog in the sea</a>
+
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'app:index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:bigcategory_new' %}">Post Bigcategory</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:login' %}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'app:regist' %}">Resist</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+    {% for category in categories %}
+	<div class="col-4">
+
+	<a href="{% url 'app:category' pk=category.pk %}">{{category.categories}}</a>
+</div>
+    {% endfor %}
+</div>
+
+</div>
+{% endblock %}
